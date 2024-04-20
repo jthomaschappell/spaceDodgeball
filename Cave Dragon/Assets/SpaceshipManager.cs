@@ -6,7 +6,7 @@ using UnityEngine;
 public class SpaceshipManager : MonoBehaviour
 {
     public float speed = 5f; // Adjust the speed as needed
-
+    public GameObject objectToSpawn;
     void Update()
     {
         // Move up when the "W" key is pressed
@@ -32,6 +32,12 @@ public class SpaceshipManager : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, 0f, 270f);
             transform.Translate(Vector3.up * speed * Time.deltaTime);
         }
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            Instantiate(objectToSpawn, transform.position, transform.rotation);
+            Debug.Log(transform.localRotation.eulerAngles.z);
+        }
+
     }
 }
 
